@@ -1,0 +1,57 @@
+<div class="tab" data-ng-class="{selected: selected, show: show}">
+	 <div class="tab-body">	
+		 <h1 data-ng-show="!queryImageUrl">{{title}}</h1>
+		 <h2 data-ng-show="!queryImageUrl">{{subtitle}}</h2>
+		<div class="drag-section" data-ng-class="{dragover: dragover}" ondragover="angular.element(this).scope().dragOver(event)" ondragleave="angular.element(this).scope().dragLeave(event)" ondrop="angular.element(this).scope().drop(event)" data-ng-show="!queryImageUrl">
+			<div class="search-image-placeholder" data-ng-class="{hasImage: queryImageUrl}">
+				<div data-ng-click="openImageSelector()" class="upload-btn colored-btn">UPLOAD IMAGE</div>
+				<div class="error" data-ng-show="imageUploadErrorType === 1">Images must be JPG, PNG or GIF</div>
+				<div class="error" data-ng-show="imageUploadErrorType === 2">Images must be bigger then 100px by 100px</div>
+				<input type="file" class="needsclick" accept="image/*">
+			</div>
+			<h3>{{gallerytitle}}</h3>
+			<div class="gallery-container">
+				<ul class="gallery">
+					<li data-ng-repeat="item in galleryItems" data-ng-click="startVisualSearch(item.searchUrl)">
+						<img ondragstart="angular.element(this).scope().onDragStart(event)" data-ng-src="{{item.displayUrl}}" alt="">
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="result-section" data-ng-show="queryImageUrl">
+			<div class="search-image">
+	            <div class="search-image-section">
+		            <div class="scanner-container">
+	    	            <img data-ng-src="{{queryImageUrl}}">
+	    				<div class="scanner"></div>
+	    				<div class="recrop-btn" data-ng-show="queryImageCropData" data-ng-click="recrop()">RE-CROP</div>
+		            </div>
+					<div class="btn" data-ng-click="tryNewSearch()">TRY A NEW SEARCH</div>
+	            </div>
+			</div>
+			<div class="product-card">
+				
+			</div>
+		   <div class="list-images">
+		   		<div class="arrow arrow-left" data-ng-click="scrollLeft()"></div>
+		   		<div class="arrow arrow-right" data-ng-click="scrollRight()"></div>
+		   		<div class="loading" data-ng-show="visualSearchStarted">
+		   			<div class="spinner-loader"></div>
+		   			<div class="text">Searching our demo inventory to find similar items</div>
+		   		</div>
+		   		<div class="result-title" data-ng-show="visualResultsTotal">Shop similar looks</div>
+				<div class="lists">
+					<ul data-ng-repeat="list in visualLists">
+						<li data-ng-repeat="result in list" data-ng-click="openLink(result.pageUrl)" ondragstart="angular.element(this).scope().onDragStart(event)">
+							<img data-ng-src="{{result.imageUrl}}" alt="">
+							<div class="title">
+								<div class="text">{{getTitle(result)}}</div>
+								<div class="price">{{result.price}}</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+		   </div>
+		</div>
+	</div>
+</div>

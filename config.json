@@ -1,0 +1,13 @@
+{
+	"AppTitle": "<App Title - Change>",
+	"AppDescription": "<App Description - Change>",
+	"AppVersion": "1.0.0",
+	"APISubDomain": "<Api subdomain - Change>",
+	"APIIndex": "<Api index - Change>",
+	"APIKey": "<Api key - Change>",
+	"H1Color": "#4c4b4b",
+	"H2Color": "#4c4b4b",
+	"H3Color": "#4c4b4b",
+	"BtnColor": "#67c402",
+	"BtnColorHover": "#71d504"
+}

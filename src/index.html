@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-ng-app="widget">
+    <head>
+        <title>@@AppTitle</title>
+        <meta charset="UTF-8">
+        <meta name="robots" content="all">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="msapplication-config" content="none"/>
+        <link rel="stylesheet" type="text/css" href="css/styles.min.css?version=@@AppVersion">
+        <script type="text/javascript" src="js/app.min.js?version=@@AppVersion"></script>
+    </head>
+    <body>
+        <div class="widget" data-ng-controller="WidgetController">
+            <div class="header">
+                <div class="left">
+                    <div class="logo"></div>
+                    <div class="for">for @@AppTitle</div>
+                </div>
+            </div>
+            <div class="body">
+                <div class="tab-content">
+                    <tab-content
+                        data-selected="selectedTabIndex == 0"
+                        data-user-id="{{userId}}"
+                        data-search-server="@@APISubDomain"
+                        data-title="@@AppTitle"
+                        data-subtitle="@@AppDescription"
+                        data-search-index="@@APIIndex">
+                    </tab-content>
+                </div>
+            </div>
+            <div class="crop-dialog" data-ng-show="cropWindow" data-ng-class="{in: cropWindow.done}">
+                <div class="mask" data-ng-click="closeCropWindow(false)">
+                    <div class="close-btn" data-ng-click="closeCropWindow(false)"></div>
+                </div>
+                <div class="box">
+                    <h1>Crop just the item you want</h1>
+                    <img data-ng-src="{{cropWindow.imageUrl}}">
+                    <div class="btn colored-btn" data-ng-click="closeCropWindow(true)">FIND SIMILAR</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
